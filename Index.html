@@ -1,220 +1,226 @@
 <html>
-    <title>Task List</title>
+<title>Task List</title>
 
-    <style>
+<style>
+    body {
+        margin: auto;
+        padding: 0;
+        align-content: center;
 
-        body{
-            margin: auto;
-            padding: 0;
-            align-content: center;
-        
-            
-        }
-        table
-        {
-            border: 1px solid black;
-            width: 50%;
-            align-content: center;
-            margin:auto;
 
-                  }
+    }
 
-                  
-th, td {
-  padding: 15px;
-  border: 1px solid black;
-  border-collapse: collapse;
-  text-align:left;
-  font-family:'Courier New', Courier, monospace;
-  font-weight: bold;
+    table {
+        border: 1px solid black;
+        width: 50%;
+        align-content: center;
+        margin: auto;
 
-  font-size: larger;
-}
+    }
 
-table#t01 {
-  width: 50%;    
-  background-color:grey;
-}
 
-       div{
+    th,
+    td {
+        padding: 15px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: left;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
 
-         font-family: "Courier New', Courier, monospace";
-         font-size:x-large;
-       }
+        font-size: larger;
+    }
 
-       h1{
-           font-display: bold;
-           font-family: 'Courier New', Courier, monospace;
-           padding-top:20px;
-           text-align: center;
-         }
+    table#t01 {
+        width: 50%;
+        background-color: grey;
+    }
 
-         input[type="radio"]{
-            float: left;
-            width: auto;
-           margin-left: 3em;
-}
+    div {
+        font-weight: bold;
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+        font-family: "Courier New', Courier, monospace";
+        font-size: x-large;
+    }
 
-/* Style the list items */
-li {
-  cursor: pointer;
-  position: relative;  
-  font-size: 25px;
-  font-family: 'Courier New', Courier, monospace;
-  padding-left: 250px;
-  padding-top: 20px;
-  font-weight: bold;
-}
+    h1 {
+        font-display: bold;
+        font-family: 'Courier New', Courier, monospace;
+        padding-top: 20px;
+        text-align: center;
+    }
 
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
+    input[type="radio"] {
+        float: left;
+        width: auto;
+        margin-left: 3em;
+    }
 
+    ul {
+        margin: 0;
+        padding: 0;
+    }
 
-        
-    </style>
-    <body>
-        <div>
-            <h1>Create Task</h1>
-            <table id="t01" >
-                    <tr>
-                        <td>
-                            Add Task 
-                        </td>
-                        <td> <textarea id="myTextarea" cols="100" rows="9" style="font-family: 'Courier New', Courier, monospace;font-weight: bold" ></textarea> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Priority</td>
-                        <td>
-                            <input type="radio" name="priority" id="high" autofocus >High<br>
-                            <input type="radio" name="priority" id="medium">Medium<br>
-                            <input type="radio" name="priority" id="low">Low<br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+    /* Style the list items */
+    li {
+        cursor: pointer;
+        position: relative;
+        font-size: 25px;
+        font-family: 'Courier New', Courier, monospace;
+        padding-left: 250px;
+        padding-top: 20px;
+        font-weight: bold;
+    }
 
-                        </td>
-                        <td>
-                                <input type="button" text="Submit" value="Submit" onclick="submitTask()" style="font-size: x-large;font-family: 'Courier New', Courier, monospace;font-display:bold "  > 
-                        </td>
-                        
-                      
-                    </tr>
-                    <tr>
-                        <td>
-                            Select Priority
-                        </td>
-                        <td>
-                                <select id="myselect">
-                                        <option value="select">Select</option>
-                                        <option value="High">High</option>
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                      </select>
-                        </td>
-                      
-                    </tr>
-                    <tr>
-                        <td>
+    li1 {
+        cursor: pointer;
+        position: relative;
+        font-size: 25px;
+        font-family: 'Courier New', Courier, monospace;
+        padding-left: 250px;
 
-                        </td>
-                            <td>
-                                    <input type="button" text="Sort Priority wise " value="Sort" onclick="SortTask()" style="font-size: x-large;font-family: 'Courier New', Courier, monospace;font-display:bold "  >
-                                </td>
-                    </tr>
-                </table>
-        </div>
-
-        <script>
-        function submitTask (){
-
-            
-          var priority_high=document.getElementById("high").checked;
-          var priority_low=document.getElementById("low").checked;
-          var priority_medium=document.getElementById("medium").checked;
-          var txtData;
-          var flag=0;
-
-          if(priority_high===true)
-          {
-             txtData=document.getElementById("myTextarea").value + "- High";
-          }
-          else if(priority_low===true)
-          {
-             txtData=document.getElementById("myTextarea").value + "- Low";
-          }
-          else if(priority_medium===true)
-          {
-             txtData=  document.getElementById("myTextarea").value + "- Medium";
-          }
-          else
-          {
-            window.  alert("Please select Priority");
-            flag=1;  
-          }
-        
-        if(flag===0)
-        {
-          var list= document.createElement("li");
-            var textnode = document.createTextNode(txtData)  ;
-            
-            var span = document.createElement("SPAN");
-            var txt = document.createTextNode("\u00D7");
-            span.className = "close";
-            span.appendChild(txt);
-  
+        font-weight: bold;
+    }
 
 
 
-            list.appendChild(textnode);
-            list.appendChild(span);
-           document.body .appendChild(list); 
-           document.getElementById("myTextarea").value="";
-        }
-        }
+    .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px 16px 12px 16px;
+    }
+</style>
 
-        function DeleteTask()
-        {
-          var txt=document.getElementById("li").onclick();
-          console.log(txt);
+<body>
+    <div>
+        <h1>Create Task</h1>
+        <table id="t01">
+            <tr>
+                <td>
+                    Add Task
+                </td>
+                <td> <textarea id="myTextarea" cols="100" rows="9"
+                        style="font-family: 'Courier New', Courier, monospace;font-weight: bold; font-size:large "></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Priority</td>
+                <td>
+                    <input type="radio" name="priority" id="high" autofocus>High<br>
+                    <input type="radio" name="priority" id="medium">Medium<br>
+                    <input type="radio" name="priority" id="low">Low<br>
+                </td>
+            </tr>
+            <tr>
+                <td>
 
-          
+                </td>
+                <td>
+                    <input type="button" text="Submit" value="Submit" onclick="submitTask()"
+                        style="font-size: x-large;font-family: 'Courier New', Courier, monospace;font-display:bold ">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Select Priority
+                </td>
+                <td>
+                    <select id="myselect">
+                        <option value="select">Select</option>
+                        <option value="High">High</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <input type="button" text="Sort Priority wise " value="Sort" onclick="SortTask()"
+                        style="font-size: x-large;font-family: 'Courier New', Courier, monospace;font-display:bold ">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function submitTask() {
+            var priority_high = document.getElementById("high").checked;
+            var priority_low = document.getElementById("low").checked;
+            var priority_medium = document.getElementById("medium").checked;
+            var txtData;
+            var flag = 0;
+
+            if (priority_high === true) {
+                txtData = document.getElementById("myTextarea").value + "-High";
+            }
+            else if (priority_low === true) {
+                txtData = document.getElementById("myTextarea").value + "-Low";
+            }
+            else if (priority_medium === true) {
+                txtData = document.getElementById("myTextarea").value + "-Medium";
+            }
+            else {
+                window.alert("Please select Priority");
+                flag = 1;
+            }
+
+            if (flag === 0) {
+                var list = document.createElement("li");
+                var textnode = document.createTextNode(txtData);
+                list.appendChild(textnode);
+                
+                document.body.appendChild(list);
+                document.getElementById("myTextarea").value = "";
+            }
         }
 
-        function SortTask()
-        {
-           var ddlValue=document.getElementById("myselect").value;
-//console.log(ddlValue);
-           var list=document.querySelectorAll ("li");
-           var txtSplt;
-           //console.log(list);
-           var item=list.childNodes;
-           //console.log(item);
-           for ( i=0;i<list.length;i++)
-           { 
-              var p= list.value;
-
-               console.log(p);
-               if(ddlValue===list.textContent)
-               {
-
-               }
-
-           }
-           
+        function DeleteTask() {
+            var txt = document.getElementById("li").onclick();
+            console.log(txt);
         }
-        </script>
-        
-    </body>
+
+        function SortTask() {
+
+            var ddlValue = document.getElementById("myselect").value;
+            var list = document.querySelectorAll("li");
+            var txtSplt;
+            var remaining = "";
+
+            for (i = 0; i < list.length; i++) {
+                var p = list[i].innerText;
+                var strPr = p.substring(p.indexOf('-'));
+                var strSub = strPr.substring(1);
+
+                if (ddlValue.toUpperCase() == strSub.toUpperCase()) {
+                    txtData = p;
+                    var item = list.childNodes;
+                    var list1 = document.createElement("li");
+                    var textnode = document.createTextNode(txtData);
+                    list1.appendChild(textnode);
+                }
+                else {
+                    remaining = p;
+                }
+                document.body.appendChild(list1);
+            }
+            console.log(remaining);
+            if (remaining != "") {
+                var list1 = document.createElement("li");
+                var textnode = document.createTextNode(remaining);
+                console.log(textnode);
+
+                list1.appendChild(textnode);
+                console.log(list1);
+            }
+            document.body.appendChild(list1);
+        }
+    </script>
+
+</body>
+
 </html>
