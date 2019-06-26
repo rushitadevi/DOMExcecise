@@ -6,8 +6,6 @@
         margin: auto;
         padding: 0;
         align-content: center;
-
-
     }
 
     table {
@@ -15,13 +13,11 @@
         width: 50%;
         align-content: center;
         margin: auto;
-
     }
-
 
     th,
     td {
-        padding: 15px;
+       
         border: 1px solid black;
         border-collapse: collapse;
         text-align: left;
@@ -33,7 +29,7 @@
 
     table#t01 {
         width: 50%;
-        background-color: grey;
+        background-color:oldlace;
     }
 
     div {
@@ -72,23 +68,17 @@
         font-weight: bold;
     }
 
-    li1 {
-        cursor: pointer;
-        position: relative;
-        font-size: 25px;
-        font-family: 'Courier New', Courier, monospace;
-        padding-left: 250px;
-
-        font-weight: bold;
-    }
-
-
-
     .close {
         position: absolute;
         right: 0;
         top: 0;
         padding: 12px 16px 12px 16px;
+    }
+
+    #myselect
+    {
+       font-family: 'Courier New', Courier, monospace;
+       font-weight: bold;        
     }
 </style>
 
@@ -100,16 +90,16 @@
                 <td>
                     Add Task
                 </td>
-                <td> <textarea id="myTextarea" cols="100" rows="9"
+                <td> <textarea id="myTextarea" cols="30" rows="5"
                         style="font-family: 'Courier New', Courier, monospace;font-weight: bold; font-size:large "></textarea>
                 </td>
             </tr>
             <tr>
                 <td>Priority</td>
                 <td>
-                    <input type="radio" name="priority" id="high" autofocus>High<br>
-                    <input type="radio" name="priority" id="medium">Medium<br>
-                    <input type="radio" name="priority" id="low">Low<br>
+                    <input type="radio" name="priority" id="high" autofocus style=" margin-left:10px" >High<br>
+                    <input type="radio" name="priority" id="medium" style=" margin-left:10px" >Medium<br>
+                    <input type="radio" name="priority" id="low" style=" margin-left:10px">Low<br>
                 </td>
             </tr>
             <tr>
@@ -129,8 +119,8 @@
                     <select id="myselect">
                         <option value="select">Select</option>
                         <option value="High">High</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
+                        <option value="low">low</option>
+                        <option value="medium">medium</option>
                     </select>
                 </td>
 
@@ -195,20 +185,19 @@
                 var p = list[i].innerText;
                 var strPr = p.substring(p.indexOf('-'));
                 var strSub = strPr.substring(1);
-
+                console.log(strSub);
+                console.log(list1);
                 if (ddlValue.toUpperCase() == strSub.toUpperCase()) {
                     txtData = p;
                     var item = list.childNodes;
                     var list1 = document.createElement("li");
                     var textnode = document.createTextNode(txtData);
                     list1.appendChild(textnode);
+                    document.body.appendChild(list1);  
                 }
                 else {
                     remaining = p;
-                }
-                document.body.appendChild(list1);
             }
-            console.log(remaining);
             if (remaining != "") {
                 var list1 = document.createElement("li");
                 var textnode = document.createTextNode(remaining);
@@ -220,7 +209,6 @@
             document.body.appendChild(list1);
         }
     </script>
-
 </body>
 
 </html>
